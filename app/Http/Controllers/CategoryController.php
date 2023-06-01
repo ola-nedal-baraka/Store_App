@@ -11,7 +11,7 @@ class CategoryController extends Controller{
     }
     
     public function index(){
-        $categories = Category::where('user_id', Auth::id())->paginate(20);//typically 15 items per page(default value)
+         $categories = auth()->user()->categories()->paginate();
        return view('admin.categories.index',compact('categories'));
     }
 

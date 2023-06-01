@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
        // $products = Product::all();
 
-        $products = Product::where('user_id', Auth::id())->paginate();//typically 15 items per page(default value)
+        $products = auth()->user()->products()->paginate();
         return view('admin.products.index',compact('products'));
     }
 
